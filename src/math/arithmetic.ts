@@ -1,4 +1,4 @@
-import { Binary, Bit, Pad } from "./util";
+import type { Binary, Bit, Pad } from "./util";
 
 export type Add<
   A extends Binary,

@@ -1,7 +1,4 @@
-// ~~ Util ~~
-
-type Digit = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-type ASCII = [
+export type ASCII = [
   "\u0000",
   "\u0001",
   "\u0002",
@@ -130,7 +127,7 @@ type ASCII = [
   "}",
   "~"
 ];
-type WordChar =
+export type WordChar =
   | "A"
   | "B"
   | "C"
@@ -184,30 +181,3 @@ type WordChar =
   | "y"
   | "z"
   | "_";
-
-type IndexOf<Item, List extends any[], Index extends 1[] = []> = List extends [
-  Item,
-  ...any
-]
-  ? Index["length"]
-  : List extends [any, ...infer R extends any[]]
-  ? IndexOf<Item, R, [...Index, 1]>
-  : -1;
-
-// ~~ Golfscript ~~
-
-/*
-
-I think I've finished the bulk of the work. Now I just have to implement the built-ins, which
-might be kind of tricky. I think I'm going to drop support for bitwise operations for now but
-I might want to reconsider that at some point by working on binary digit lists instead of
-base-10; after all, I am going to have to implement base conversion anyway... I'll have to
-think about this a bit more. It might make implementation a bit harder since binary is 
-obviously a lot less intuitive than base-10 to a human like me so I might struggle getting it
-to work right. Fingers crossed.
-
-I also have to figure out that bug with arrays I was running into before
-
-*/
-
-type BuiltIns = {};

@@ -2,6 +2,7 @@
   "compilerOptions": {
     "strict": true,
     "noEmit": true,
+    "isolatedModules": true,
     "lib": ["ES2020"] // remove Node / DOM typings
   }
 }
