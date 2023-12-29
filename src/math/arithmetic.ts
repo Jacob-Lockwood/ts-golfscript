@@ -54,10 +54,10 @@ export type DivMod<
   Numerator extends Binary,
   Denominator extends Binary,
   Division extends Binary = Pad<[]>
-> = Compare<Numerator, Denominator> extends 1
-  ? DivMod<
+> = Compare<Numerator, Denominator> extends -1
+  ? [Division, Numerator]
+  : DivMod<
       Subtract<Numerator, Denominator>,
       Denominator,
       Add<Division, Pad<[1]>>
-    >
-  : [Division, Numerator];
+    >;
