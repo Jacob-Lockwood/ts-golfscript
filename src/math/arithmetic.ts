@@ -30,7 +30,7 @@ export type Subtract<
     : never
   : Result;
 
-/** A > B -> 1, A = B -> 0, A < B -> -1 */
+/** A > B -> 1, A <= B -> 0 */
 export type Compare<A extends Binary, B extends Binary> = A extends [
   infer BitA extends Bit,
   ...infer A extends Binary
@@ -39,7 +39,7 @@ export type Compare<A extends Binary, B extends Binary> = A extends [
     ? [BitA, BitB] extends [1, 0]
       ? 1
       : [BitA, BitB] extends [0, 1]
-      ? -1
+      ? 0
       : Compare<A, B>
     : never
   : 0;
@@ -54,7 +54,7 @@ export type DivMod<
   Numerator extends Binary,
   Denominator extends Binary,
   Division extends Binary = Pad<[]>
-> = Compare<Numerator, Denominator> extends -1
+> = Compare<Numerator, Denominator> extends 0
   ? [Division, Numerator]
   : DivMod<
       Subtract<Numerator, Denominator>,
