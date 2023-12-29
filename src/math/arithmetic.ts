@@ -48,7 +48,7 @@ export type Multiply<
   A extends Binary,
   B extends Binary,
   Result extends Binary = Pad<[]>
-> = A extends 0[] ? Result : Multiply<Subtract<A, Pad<[1]>>, B, Add<Result, B>>;
+> = B extends 0[] ? Result : Multiply<A, Subtract<B, Pad<[1]>>, Add<Result, A>>;
 
 export type DivMod<
   Numerator extends Binary,
@@ -61,3 +61,11 @@ export type DivMod<
       Denominator,
       Add<Division, Pad<[1]>>
     >;
+
+export type Exponentiate<
+  Base extends Binary,
+  Power extends Binary,
+  Result extends Binary = Pad<[]>
+> = Power extends 0[]
+  ? Result
+  : Exponentiate<Base, Subtract<Power, Pad<[1]>>, Multiply<Result, Base>>;
